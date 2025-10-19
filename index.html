@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>20/10 — Dành tặng các bạn nữ & Cô giáo 10C4</title>
+  <meta name="description" content="Thiệp 20/10 đặc sắc dành tặng các bạn nữ và cô giáo chủ nhiệm lớp 10C4" />
+  <style>
+    :root {
+      --bg1:#12021f; --bg2:#3b0d3a; --accent1:#ff86c0; --accent2:#7b2cbf; 
+      --card:#fff7fb; --muted:#f3e8f9; --glass: rgba(255,255,255,0.06);
+    }
+    *{box-sizing:border-box}
+    html,body{
+      height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+      background:radial-gradient(1200px 600px at 10% 10%,#2b0038 0%,var(--bg1) 25%,var(--bg2) 100%);
+      color:var(--card);-webkit-font-smoothing:antialiased;
+    }
+
+    /* 🎬 Intro video */
+    #introScreen {
+      position:fixed;top:0;left:0;width:100%;height:100%;background:#000;
+      display:flex;align-items:center;justify-content:center;flex-direction:column;
+      z-index:9999;animation:fadeInIntro 1s ease;
+    }
+    #introVideo {width:100%;height:100%;object-fit:cover;}
+    #startBtn {
+      position:absolute;bottom:40px;padding:14px 26px;font-size:1.2rem;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      border:none;border-radius:12px;color:#140019;font-weight:800;cursor:pointer;
+      box-shadow:0 0 15px rgba(255,134,192,0.8);
+    }
+    @keyframes fadeInIntro {
+      from {opacity:0;} to {opacity:1;}
+    }
+
+    /* 🌸 Thiệp chính */
+    .wrap{max-width:1100px;margin:30px auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .title{font-size:1.4rem;font-weight:800;display:flex;align-items:center;gap:12px}
+    .subtitle{color:var(--muted);font-size:0.95rem}
+    .stage{display:grid;grid-template-columns:1fr 420px;gap:22px;margin-top:18px;align-items:start}
+    @media (max-width:920px){.stage{grid-template-columns:1fr;}}
+    .cards-area{background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.02));border-radius:14px;padding:18px;box-shadow:0 12px 36px rgba(0,0,0,0.6)}
+    .intro{display:flex;align-items:center;gap:14px}
+    .intro .badge{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:10px;border-radius:12px;color:#140019;font-weight:800}
+    .intro p{margin:0;color:rgba(255,255,255,0.85)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:16px}
+    .card{perspective:1100px}
+    .card .inner{position:relative;height:260px;border-radius:14px;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.9,.3,1);box-shadow:0 14px 40px rgba(0,0,0,0.6);cursor:pointer;overflow:hidden}
+    .card.flipped .inner{transform:rotateY(180deg)}
+    .side{position:absolute;inset:0;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px}
+    .front{background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.03)}
+    .front .icon{font-size:3rem;animation:float 3s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+    .preview{position:relative;border-radius:12px;padding:16px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));box-shadow:0 12px 36px rgba(0,0,0,0.6)}
+    .screen{height:420px;border-radius:12px;background:linear-gradient(180deg,#2e003b,#44125a);overflow:hidden;position:relative}
+    .envelope{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:76%;max-width:360px;transition:transform 1s ease-in-out}
+    .envelope.fly{animation:flyUp 1.5s ease-in-out forwards}
+    @keyframes flyUp{0%{transform:translate(-50%,-50%) scale(1);}50%{transform:translate(-50%,-70%) scale(1.05);}100%{transform:translate(-50%,-50%) scale(1);}}
+    .env-back{width:100%;height:160px;background:linear-gradient(180deg,#ffd9f0,#ffe9fb);border-radius:10px;position:relative;box-shadow:0 14px 40px rgba(0,0,0,0.45)}
+    .env-flap{position:absolute;left:0;right:0;top:-38%;height:80%;background:linear-gradient(180deg,#ffb6e6,#ff84d8);transform-origin:top center;border-radius:50% 50% 0 0;transition:transform .8s cubic-bezier(.2,.9,.3,1)}
+    .envelope.open .env-flap{transform:rotateX(180deg)}
+    .card-sheet{position:absolute;left:7%;right:7%;top:34%;padding:12px;background:#fff;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.25);transform-origin:top;transition:transform .8s cubic-bezier(.22,.9,.3,1), opacity 1s ease;}
+    .envelope.open .card-sheet{transform:translateY(-120px) rotateX(6deg);opacity:1;animation:glow 1.8s ease-in-out;}
+    @keyframes glow{0%{box-shadow:0 0 0 rgba(255,255,255,0);}50%{box-shadow:0 0 25px rgba(255,183,244,0.9);}100%{box-shadow:0 0 10px rgba(255,255,255,0.4);}}
+    .sheet-title{font-weight:800;color:#140019}
+    .sheet-msg{color:#2b0b21;margin-top:8px;line-height:1.45;text-align:center;opacity:0;transform:scale(0.8);transition:all 1s ease-in-out;}
+    .sheet-msg.show{opacity:1;transform:scale(1.05);}
+    .controls{display:flex;gap:8px;margin-top:12px}
+    button.primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#140019;border:none;padding:10px 14px;border-radius:10px;font-weight:800;cursor:pointer;transition:transform .2s}
+    button.primary:hover{transform:scale(1.05)}
+    button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:10px 12px;border-radius:10px}
+    #confetti{position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:999}
+    footer{margin-top:18px;color:rgba(255,255,255,0.65);text-align:center}
+  </style>
+</head>
+
+<body>
+  <!-- 🎬 Video mở đầu -->
+  <div id="introScreen">
+    <video id="introVideo" preload="auto">
+      <source src="nhac2010.mp4" type="video/mp4">
+    </video>
+    <button id="startBtn">🎬 BẮT ĐẦU TRẢI NGHIỆM 20/10</button>
+  </div>
+
+  <!-- 🌸 Nội dung chính -->
+  <canvas id="confetti"></canvas>
+  <div class="wrap">
+    <header>
+      <div>
+        <div class="title">🌸 20/10 — Dành tặng các bạn nữ & Cô giáo chủ nhiệm 10C4</div>
+        <div class="subtitle">Thiệp sắc tím hồng, hiệu ứng mở thiệp & confetti sống động</div>
+      </div>
+      <div style="text-align:right">
+        <div style="background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:8px 12px;border-radius:10px;color:#140019;font-weight:800">10C4</div>
+      </div>
+    </header>
+
+    <div class="stage">
+      <section class="cards-area">
+        <div class="intro">
+          <div class="badge">20/10</div>
+          <div>
+            <h2 style="margin:0;color:var(--card)">Gửi tặng các bạn nữ và Cô giáo chủ nhiệm</h2>
+            <p>Chọn một thiệp — Khi mở sẽ hiện lời chúc và hiệu ứng lung linh 🎶</p>
+          </div>
+        </div>
+        <div class="grid" id="grid"></div>
+      </section>
+
+      <aside class="preview">
+        <div class="screen" id="screen">
+          <div class="envelope" id="envelope">
+            <div class="env-back"></div>
+            <div class="env-flap"></div>
+            <div class="card-sheet" id="cardSheet">
+              <div class="sheet-title" id="sheetTitle">Thiệp 20/10</div>
+              <div class="sheet-msg" id="sheetMsg">Sẵn sàng mở thiệp...</div>
+            </div>
+          </div>
+        </div>
+        <div class="controls">
+          <button class="primary" id="openBtn">Mở thiệp</button>
+          <button class="ghost" id="nextBtn">Mở tiếp</button>
+          <button class="ghost" id="musicBtn">Nhạc On/Off</button>
+        </div>
+      </aside>
+    </div>
+
+    <footer>💜 Chúc các bạn nữ & cô giáo chủ nhiệm 10C4 một ngày 20/10 thật ý nghĩa!</footer>
+  </div>
+
+  <!-- 🎵 Âm thanh -->
+  <audio id="bgMusic" src="piano-ready-for-loop-89011.mp3" loop preload="auto"></audio>
+  <audio id="sfxOpen" src="flip-page-105778.mp3" preload="auto"></audio>
+  <audio id="sfxBurst" src="fireworks-29629.mp3" preload="auto"></audio>
+
+  <script>
+    /* 🎬 Xử lý video mở đầu */
+    const intro = document.getElementById("introScreen");
+    const video = document.getElementById("introVideo");
+    const startBtn = document.getElementById("startBtn");
+
+    startBtn.addEventListener("click", () => {
+      startBtn.style.display = "none";
+      video.muted = false;
+      video.play();
+      video.addEventListener("ended", () => {
+        intro.style.transition = "opacity 1s ease";
+        intro.style.opacity = 0;
+        setTimeout(() => { intro.style.display = "none"; }, 1000);
+      });
+    });
+
+    /* 💌 Thiệp */
+    const cards = [
+      {title:'Thiệp cho Cô giáo', msg:'Kính chúc cô giáo chủ nhiệm luôn mạnh khỏe, hạnh phúc và gặt hái nhiều thành công. Cảm ơn cô đã dìu dắt 10C4!'},
+      {title:'Thiệp cho các bạn nữ 10C4 (1)', msg:'Gửi đến những nụ cười tươi của 10C4 — chúc các bạn luôn rạng rỡ, mạnh khỏe và thành công.'},
+      {title:'Thiệp cho các bạn nữ 10C4 (2)', msg:'Chúc các bạn có một ngày 20/10 ngập tràn yêu thương, tự tin tỏa sáng và luôn hạnh phúc.'},
+      {title:'Thiệp đặc biệt 10C4', msg:'Chúc gia đình, bạn bè và cô giáo luôn bình an — 10C4 tiến bước vững vàng!'}
+    ];
+
+    const grid=document.getElementById('grid'),envelope=document.getElementById('envelope');
+    const sheetTitle=document.getElementById('sheetTitle'),sheetMsg=document.getElementById('sheetMsg');
+    const openBtn=document.getElementById('openBtn'),nextBtn=document.getElementById('nextBtn'),musicBtn=document.getElementById('musicBtn');
+    let current=0,opened=new Set(),musicOn=false;
+
+    function render(){
+      grid.innerHTML='';
+      cards.forEach((c,i)=>{
+        const el=document.createElement('div');
+        el.className='card';
+        el.innerHTML=`<div class="inner"><div class="side front"><div class="icon">💌</div><h3>${c.title}</h3><p>Nhấn để chọn</p></div></div>`;
+        el.addEventListener('click',()=>select(i));
+        grid.appendChild(el);
+      });
+      select(0);
+    }
+    function select(i){
+      current=i;
+      sheetTitle.textContent=cards[i].title;
+      sheetMsg.textContent='Sẵn sàng mở thiệp...';
+      sheetMsg.classList.remove('show');
+      envelope.classList.remove('open');
+    }
+
+    openBtn.addEventListener('click',()=>{
+      if(opened.has(current)){sheetMsg.textContent='Thiệp này đã được mở 🎀';sheetMsg.classList.add('show');return;}
+      play('sfxOpen');
+      envelope.classList.add('fly');
+      setTimeout(()=>{
+        envelope.classList.add('open');
+        setTimeout(()=>{
+          sheetMsg.textContent=cards[current].msg;
+          sheetMsg.classList.add('show');
+          play('sfxBurst');
+          burstConfetti();
+          opened.add(current);
+        },800);
+      },400);
+      setTimeout(()=>envelope.classList.remove('fly'),1800);
+    });
+
+    nextBtn.addEventListener('click',()=>{
+      envelope.classList.remove('open');
+      sheetMsg.classList.remove('show');
+      const next=cards.findIndex((_,i)=>!opened.has(i));
+      if(next===-1){sheetMsg.textContent='Đã mở hết các thiệp 💖';sheetMsg.classList.add('show');return;}
+      select(next);
+    });
+
+    musicBtn.addEventListener('click',()=>{
+      const bg=document.getElementById('bgMusic');
+      if(!musicOn){bg.play();musicOn=true;musicBtn.textContent='Tắt nhạc';}
+      else {bg.pause();musicOn=false;musicBtn.textContent='Nhạc On/Off';}
+    });
+
+    function play(id){const a=document.getElementById(id);if(!a)return;a.currentTime=0;a.play().catch(()=>{});}
+
+    /* 🎆 Confetti */
+    const canvas=document.getElementById('confetti'),ctx=canvas.getContext('2d');
+    let W=canvas.width=innerWidth,H=canvas.height=innerHeight;
+    window.addEventListener('resize',()=>{W=canvas.width=innerWidth;H=canvas.height=innerHeight;});
+    const parts=[];function rand(min,max){return Math.random()*(max-min)+min}
+    class P{constructor(x,y,dx,dy,c,s){this.x=x;this.y=y;this.dx=dx;this.dy=dy;this.c=c;this.s=s;this.life=0;this.ttl=160+Math.random()*80}update(){this.x+=this.dx;this.y+=this.dy;this.dy+=0.2;this.life++;}draw(){ctx.save();ctx.translate(this.x,this.y);ctx.rotate((this.life/10));ctx.fillStyle=this.c;ctx.fillRect(-this.s/2,-this.s/2,this.s,this.s);ctx.restore();}}
+    function burstConfetti(){for(let i=0;i<120;i++){parts.push(new P(W/2+rand(-80,80),H/2+rand(-40,40),rand(-5,5),rand(-12,-2),`hsl(${Math.floor(rand(280,340))}deg 80% 65%)`,rand(4,9)));}}
+    function loop(){ctx.clearRect(0,0,W,H);for(let i=parts.length-1;i>=0;i--){const p=parts[i];p.update();p.draw();if(p.life>p.ttl||p.y>H+50)parts.splice(i,1);}requestAnimationFrame(loop);}loop();
+
+    render();
+  </script>
+</body>
+</html>
