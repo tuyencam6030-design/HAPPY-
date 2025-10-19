@@ -15,37 +15,54 @@
       height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
       background:radial-gradient(1200px 600px at 10% 10%,#2b0038 0%,var(--bg1) 25%,var(--bg2) 100%);
       color:var(--card);-webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
     }
 
     /* 🎬 Intro video */
     #introScreen {
       position:fixed;top:0;left:0;width:100%;height:100%;background:#000;
       display:flex;align-items:center;justify-content:center;flex-direction:column;
-      z-index:9999;animation:fadeInIntro 1s ease;
+      z-index:9999;animation:fadeInIntro 1s ease;overflow:hidden;
     }
-    #introVideo {width:100%;height:100%;object-fit:cover;}
+
+    /* ✅ Sửa video cho responsive */
+    #introVideo {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      max-height:100vh;
+    }
+
+    /* ✅ Thêm phần responsive riêng cho mobile */
+    @media (max-aspect-ratio: 9/16) {
+      #introVideo {
+        object-fit:contain;
+        background-color:#000;
+      }
+    }
+
     #startBtn {
-      position:absolute;bottom:40px;padding:14px 26px;font-size:1.2rem;
+      position:absolute;bottom:40px;padding:14px 26px;font-size:1.1rem;
       background:linear-gradient(90deg,var(--accent1),var(--accent2));
       border:none;border-radius:12px;color:#140019;font-weight:800;cursor:pointer;
       box-shadow:0 0 15px rgba(255,134,192,0.8);
+      z-index:2;
     }
-    @keyframes fadeInIntro {
-      from {opacity:0;} to {opacity:1;}
-    }
+    @keyframes fadeInIntro {from {opacity:0;} to {opacity:1;}}
 
-    /* 🌸 Thiệp chính */
+    /* 🌸 Phần thiệp */
     .wrap{max-width:1100px;margin:30px auto;padding:20px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .title{font-size:1.4rem;font-weight:800;display:flex;align-items:center;gap:12px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;text-align:center}
+    .title{font-size:1.3rem;font-weight:800;display:flex;align-items:center;gap:12px;justify-content:center;flex-wrap:wrap}
     .subtitle{color:var(--muted);font-size:0.95rem}
     .stage{display:grid;grid-template-columns:1fr 420px;gap:22px;margin-top:18px;align-items:start}
     @media (max-width:920px){.stage{grid-template-columns:1fr;}}
     .cards-area{background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.02));border-radius:14px;padding:18px;box-shadow:0 12px 36px rgba(0,0,0,0.6)}
-    .intro{display:flex;align-items:center;gap:14px}
+    .intro{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
     .intro .badge{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:10px;border-radius:12px;color:#140019;font-weight:800}
     .intro p{margin:0;color:rgba(255,255,255,0.85)}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:16px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:16px}
     .card{perspective:1100px}
     .card .inner{position:relative;height:260px;border-radius:14px;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.9,.3,1);box-shadow:0 14px 40px rgba(0,0,0,0.6);cursor:pointer;overflow:hidden}
     .card.flipped .inner{transform:rotateY(180deg)}
@@ -55,6 +72,7 @@
     @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
     .preview{position:relative;border-radius:12px;padding:16px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));box-shadow:0 12px 36px rgba(0,0,0,0.6)}
     .screen{height:420px;border-radius:12px;background:linear-gradient(180deg,#2e003b,#44125a);overflow:hidden;position:relative}
+    @media(max-width:500px){.screen{height:340px;}}
     .envelope{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:76%;max-width:360px;transition:transform 1s ease-in-out}
     .envelope.fly{animation:flyUp 1.5s ease-in-out forwards}
     @keyframes flyUp{0%{transform:translate(-50%,-50%) scale(1);}50%{transform:translate(-50%,-70%) scale(1.05);}100%{transform:translate(-50%,-50%) scale(1);}}
@@ -67,19 +85,19 @@
     .sheet-title{font-weight:800;color:#140019}
     .sheet-msg{color:#2b0b21;margin-top:8px;line-height:1.45;text-align:center;opacity:0;transform:scale(0.8);transition:all 1s ease-in-out;}
     .sheet-msg.show{opacity:1;transform:scale(1.05);}
-    .controls{display:flex;gap:8px;margin-top:12px}
+    .controls{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;justify-content:center}
     button.primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#140019;border:none;padding:10px 14px;border-radius:10px;font-weight:800;cursor:pointer;transition:transform .2s}
     button.primary:hover{transform:scale(1.05)}
     button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:10px 12px;border-radius:10px}
     #confetti{position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:999}
-    footer{margin-top:18px;color:rgba(255,255,255,0.65);text-align:center}
+    footer{margin-top:18px;color:rgba(255,255,255,0.65);text-align:center;font-size:0.9rem}
   </style>
 </head>
 
 <body>
   <!-- 🎬 Video mở đầu -->
   <div id="introScreen">
-    <video id="introVideo" preload="auto">
+    <video id="introVideo" playsinline preload="auto">
       <source src="nhac2010.mp4" type="video/mp4">
     </video>
     <button id="startBtn">🎬 BẮT ĐẦU TRẢI NGHIỆM 20/10</button>
@@ -93,11 +111,8 @@
         <div class="title">🌸 20/10 — Dành tặng các bạn nữ & Cô giáo chủ nhiệm 10C4</div>
         <div class="subtitle">Thiệp sắc tím hồng, hiệu ứng mở thiệp & confetti sống động</div>
       </div>
-      <div style="text-align:right">
-        <div style="background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:8px 12px;border-radius:10px;color:#140019;font-weight:800">10C4</div>
-      </div>
+      <div style="background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:8px 12px;border-radius:10px;color:#140019;font-weight:800">10C4</div>
     </header>
-
     <div class="stage">
       <section class="cards-area">
         <div class="intro">
@@ -230,5 +245,8 @@
 
     render();
   </script>
+    <!-- Giữ nguyên phần JS + HTML phía dưới của bạn -->
+    <!-- (bỏ qua ở đây để ngắn gọn, vì chỉ cần thay đổi phần CSS trên là đủ) -->
+  </div>
 </body>
 </html>
